@@ -1,0 +1,30 @@
+name: Build Windows VST3
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Checkout JUCE
+        uses: actions/checkout@v4
+        with:
+          repository: juce-framework/JUCE
+          path: JUCE
+
+      - name: Configure
+        run: cmake -S . -B build -A x64
+
+      - name: Build VST3
+        run: cmake --build build --config Release --target OldSchoolHipHopMaker_VST3
+
+      - name: Upload VST3
+        uses: actions/upload-artifact@v4
+        with:
+          name: Old-School-Hip-Hop-Maker-VST3
+          path: build/OldSchoolHipHopMaker_artefacts/Release/VST3/
