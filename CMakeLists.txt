@@ -19,10 +19,10 @@ juce_add_plugin(OldSchoolHipHopMaker
 )
 
 target_sources(OldSchoolHipHopMaker PRIVATE
-    Source/PluginProcessor.cpp
-    Source/PluginProcessor.h
-    Source/PluginEditor.cpp
-    Source/PluginEditor.h
+  /PluginProcessor.cpp
+  /PluginProcessor.h
+  /PluginEditor.cpp
+  /PluginEditor.h
 )
 
 target_compile_features(OldSchoolHipHopMaker PRIVATE cxx_std_17)
